@@ -12,7 +12,7 @@ const App = () => {
   const [timeoutId, setTimeoutId] = useState(null);
   const [records, setRecords] = useState([]);
   const [savedRecords, setSavedRecords] = useState([]); // 保存された記録を管理
-
+  //aaa
   useEffect(() => {
     // ゲーム開始時に保存された記録を取得
     const fetchRecords = async () => {

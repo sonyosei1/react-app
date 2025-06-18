@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #0d0d0d;
+  /* ダークな背景 */
+  color: #ffffff;
+  /* テキストの色を白に */
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, #1a1a1a, #3b3b3b);
+  /* グラデーション背景 */
+  border: 5px solid #0077cc;
+  /* ボーダーを追加 */
+  border-radius: 15px;
+  /* 角を丸く */
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  /* 強いシャドウ効果 */
+  transition: transform 0.3s;
+  /* ホバー時のトランジション */
+}
+
+.App:hover {
+  transform: scale(1.02);
+  /* ホバー時に少し拡大 */
+}
+
+h1 {
+  font-size: 48px;
+  /* タイトルのサイズ */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  /* テキストの影を強調 */
+  animation: fadeIn 1s ease-in-out;
+  /* フェードインアニメーション */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+button {
+  background-color: #0077cc;
+  /* ボタンの背景色 */
+  color: #ffffff;
+  /* ボタンのテキスト色 */
+  border: none;
+  border-radius: 10px;
+  /* ボタンを丸く */
+  padding: 15px 15px;
+  /* ボタンのパディング */
+  font-size: 24px;
+  /* ボタンのフォントサイズ */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  /* ホバー時のトランジション */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  /* ボタンのシャドウ */
+}
+
+button:hover {
+  background-color: #005fa3;
+  /* ホバー時の色 */
+  transform: translateY(-3px);
+  /* ホバー時の浮き上がり効果 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  /* ホバー時のシャドウを強調 */
+  animation: pulse 0.5s;
+  /* パルスアニメーション */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#reaction-button {
+  width: 200px;
+  height: 100px;
+  font-size: 24px;
+  transition: transform 0.2s, background-color 0.3s;
+  /* ボタンのトランジション */
+  border: none;
+  border-radius: 10px;
+  /* ボタンを丸く */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  /* ボタンのシャドウ */
+}
+
+#reaction-button:hover {
+  transform: scale(1.1);
+  /* ボタンのホバー時の拡大効果 */
+  background-color: #4caf50;
+  /* 正しいボタンのホバー時の色 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  /* ホバー時のシャドウを強調 */
+  animation: pulse 0.5s;
+  /* パルスアニメーション */
+}

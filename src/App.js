@@ -10,7 +10,7 @@ const App = () => {
   const [startTime, setStartTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
-  const [records, setRecords] = useState([]);
+  //const [records, setRecords] = useState([]);
   const [savedRecords, setSavedRecords] = useState([]); // 保存された記録を管理
   //aaa
   useEffect(() => {

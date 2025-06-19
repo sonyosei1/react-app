@@ -72,7 +72,7 @@ const App = () => {
       });
 
       // 反応速度を記録に追加
-      setRecords((prevRecords) => [...prevRecords, reactionDuration]);
+      //setRecords((prevRecords) => [...prevRecords, reactionDuration]);
       setSavedRecords((prevRecords) => [...prevRecords, reactionDuration]); // 保存された記録にも追加
     }
     setGameOver(true);

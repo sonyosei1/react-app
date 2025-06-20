@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-
 const App = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -11,17 +10,14 @@ const App = () => {
   const [startTime, setStartTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
-  //const [records, setRecords] = useState([]);
-  const [savedRecords, setSavedRecords] = useState([]); // 保存された記録を管理
-  //aaa
+  const [savedRecords, setSavedRecords] = useState([]);
+
   useEffect(() => {
-    // ゲーム開始時に保存された記録を取得
     const fetchRecords = async () => {
       const response = await fetch('/reaction-times');
       const data = await response.json();
       setSavedRecords(data);
     };
-
     fetchRecords();
   }, []);
 
@@ -38,8 +34,9 @@ const App = () => {
   }, [gameStarted]);
 
   useEffect(() => {
+    let id;
     if (buttonVisible && fakeButton) {
-      const id = setTimeout(() => {
+      id = setTimeout(() => {
         if (!gameOver) {
           setGameOver(true);
           setMessage('あなたは賢い！フェイクボタンを押しませんでした');
@@ -47,7 +44,7 @@ const App = () => {
       }, 3000);
       setTimeoutId(id);
     }
-    return () => clearTimeout(timeoutId);
+    return () => clearTimeout(id);
   }, [buttonVisible, fakeButton, gameOver]);
 
   const handleClick = async () => {
@@ -63,7 +60,6 @@ const App = () => {
       setReactionTime(reactionDuration);
       setMessage(`反応速度: ${reactionDuration} ms`);
 
-      // バックエンドに反応速度を送信
       await fetch('/reaction-time', {
         method: 'POST',
         headers: {
@@ -72,9 +68,7 @@ const App = () => {
         body: JSON.stringify({ reaction_time: reactionDuration }),
       });
 
-      // 反応速度を記録に追加
-      //setRecords((prevRecords) => [...prevRecords, reactionDuration]);
-      setSavedRecords((prevRecords) => [...prevRecords, reactionDuration]); // 保存された記録にも追加
+      setSavedRecords((prevRecords) => [...prevRecords, reactionDuration]);
     }
     setGameOver(true);
   };
@@ -93,8 +87,7 @@ const App = () => {
       return;
     }
     const sortedRecords = [...savedRecords].sort((a, b) => a - b);
-    alert(`これまでの記録:
-${sortedRecords.join('\n')} ms`);
+    alert(`これまでの記録:\n${sortedRecords.join('\n')} ms`);
   };
 
   return (
@@ -109,7 +102,7 @@ ${sortedRecords.join('\n')} ms`);
         <div style={{ textAlign: 'center' }}>
           <h2>リザルト</h2>
           {message}
-          <h3 style={{ margin: '20px 0' }}> {reactionTime > 0 ? '' : '記録なし'}</h3>
+          <h3 style={{ margin: '20px 0' }}>{reactionTime > 0 ? '' : '記録なし'}</h3>
           <div style={{ marginTop: '20px' }}>
             <button onClick={resetGame} style={{ marginRight: '10px' }}>再スタート</button>
             <button onClick={showRecords}>これまでの記録</button>
